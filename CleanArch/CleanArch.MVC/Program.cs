@@ -1,4 +1,5 @@
 using CleanArch.Infrastructure.Data.Context;
+using CleanArch.Infrastructure.IoC;
 using CleanArch.MVC.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,10 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+//
+DependencyContainer.RegisterServices(builder.Services);
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
