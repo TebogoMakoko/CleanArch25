@@ -26,6 +26,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 //
 DependencyContainer.RegisterServices(builder.Services);
 
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
